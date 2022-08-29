@@ -33,13 +33,11 @@ I can create a QQ Plot for certain numerical variables.
 For background information, refer to [Mapping Militants](https://cisac.fsi.stanford.edu/mappingmilitants). This website includes background information on most Islamic State terrorist cells in the world. 
 
 ##### OEF-P Notes:
- On September 1, 2017 Secretary of Defense James Mattis designated Operation Pacific Eagle - Philippines as a contingency operation, serving as a countinuation of Operation Freedom Eagle. *Page 98 of DOD Operation Pacific Eagle Report (PDF).
+On September 1, 2017 Secretary of Defense James Mattis designated Operation Pacific Eagle - Philippines as a contingency operation, serving as a continuation of Operation Freedom Eagle. *Page 98 of DOD Operation Pacific Eagle Report (PDF).*
 
 ##### OEF-TS Notes:
-The Trans-Sahara Counterterrorism Partnership (TSCTP) is the central U.S. interagency plan to combat terrorism in Trans-Saharan Africa. OEF-TS is the military combat component of TSCTP. Its predecessor is the Pan Sahel Initiative, focusing on Mali, Niger, Chad, and Mauritania as an initial component of the War on Terrorism beginning in 2002.
+The Trans-Sahara Counterterrorism Partnership (TSCTP) is the central U.S. interagency plan to combat terrorism in Trans-Saharan Africa. OEF-TS is the military combat component of TSCTP. Its predecessor is the Pan Sahel Initiative, focusing on Mali, Niger, Chad, and Mauritania as an initial component of the War on Terrorism beginning in 2002. 
+*Countries that OEF-TS explicitly focuses on are stated on page 48 of DOD 2019 Budget (PDF).*
 
-*Countries that OEF-TS explicitly focuses on are stated on page 48 of DOD 2019 Budget (PDF).
-
-- Sahel: Chad, Mali, Mauritania, Niger
 - Maghreb: Algeria, Morocco, Tunisia
-- Sub-Sahara: Nigeria, Senegal
+- Sub-Sahara: Burkina Faso, Cameroon, Chad, Mali, Mauritania, Niger, Nigeria, Senegal
