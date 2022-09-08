@@ -10,24 +10,26 @@ As an initial step, I have found the joint probabilities of variable combination
 
 Final goal could be to build a Bayesian Network based on the foundational framework laid by a logistic regression and Poisson model.
 
-## Potential Methods
-Additional analysis methods can include adding in graphical maps. The can serve as a better representation of the attacks, potentially showing the most dangerous attacks in a different color. (Most dangerous: type of attack with the highest casualty rates). 
+## Task List
+- Manually combine 'gname' groups into larger, more generalized groups in order to build a more accurate Logistic Regression model.
+- Plot attack coordinates using Geopandas. (Currently having import issues)
+- Accumulate sources to explain why attack success is more volatile in the Philippines than the Horn of Africa.
+- I can analyze the linear combinations with predicted probabilities of 90%> and <10% to find trends, differences, etc.
+- Build a more accurate model using ROC Curve, Accuracy Matrix, Residuals (analyze unique combinations), DF Beta (Influence).
 
-I can plot the attack coordinates on individual countries (similar to previous research). I can create a density plot by setting the alpha parameter below 1 in the scatterplot.
-
-I can create a QQ Plot for certain numerical variables.
-
-## Progress
+## Research Progress
 - I have created three subsets of data which represent three seperate components of Operation Enduring Freedom (specific mission as a part of the War on Terror). The subsets total 22,507 events. The subsets are:
 	- OEF-P Philippines (Operation Freedom Eagle)
 	- OEF-TS Trans Sahara (Operation Juniper Shield)
 	- OEF-HOA Horn of Africa
 - I have begun to examine univariate statistics on all of the variables in each subset.
 - I have created a table of all possible variable combinations and the associated success rate, attack frequency, mean casualties, and total casualties. Using this table, I can determine which specific types of attacks have the highest success/casualty rates. 
-- I have created a Logistic Regression model that predicts whether the attack will be successful or not. The highest accuracy score I have achieved is 87%. The model struggles to pick out unsuccessful attacks. 
+- I have created a High Performance Logistic Regression model that predicts whether the attack will be successful or not. 
+	- Predicted probabilities for each subset have been exported into three CSV files.
+	- I have created a table that includes all of the variable levels that are significant (a=0.05) in the model, as well as their associated p-values.
 
 ## Difficulties
-- While I can I build a Logistic Regression model that can predict successful attacks accurately, what method should I use to analyze the specific feature combinations that pose the highest probability of success?
+- I am unsure of the key differences between the SAS Logistic Procedure and the SAS HPLogistic Procedure.
 
 ## Background
 For background information, refer to [Mapping Militants](https://cisac.fsi.stanford.edu/mappingmilitants). This website includes background information on most Islamic State terrorist cells in the world. 
@@ -41,3 +43,8 @@ The Trans-Sahara Counterterrorism Partnership (TSCTP) is the central U.S. intera
 
 - Maghreb: Algeria, Morocco, Tunisia
 - Sub-Sahara: Burkina Faso, Cameroon, Chad, Mali, Mauritania, Niger, Nigeria, Senegal
+
+
+
+
+
