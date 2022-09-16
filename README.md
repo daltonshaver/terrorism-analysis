@@ -11,8 +11,7 @@ As an initial step, I have found the joint probabilities of variable combination
 Final goal could be to build a Bayesian Network based on the foundational framework laid by a logistic regression and Poisson model.
 
 ## Task List
-- Manually combine 'gname' groups into larger, more generalized groups in order to build a more accurate Logistic Regression model.
-- Plot attack coordinates using Geopandas. (Currently having import issues)
+- Plot attack coordinates using Geopandas. 
 - Accumulate sources to explain why attack success is more volatile in the Philippines than the Horn of Africa.
 - I can analyze the linear combinations with predicted probabilities of 90%> and <10% to find trends, differences, etc.
 - Build a more accurate model using ROC Curve, Accuracy Matrix, Residuals (analyze unique combinations), DF Beta (Influence).
@@ -27,6 +26,7 @@ Final goal could be to build a Bayesian Network based on the foundational framew
 - I have created a High Performance Logistic Regression model that predicts whether the attack will be successful or not. 
 	- Predicted probabilities for each subset have been exported into three CSV files.
 	- I have created a table that includes all of the variable levels that are significant (a=0.05) in the model, as well as their associated p-values.
+- I have organized the terrorist groups ("gname" variable) into more generalized groups in order to create a more accurate Logistic Regression model.
 
 ## Difficulties
 - I am unsure of the key differences between the SAS Logistic Procedure and the SAS HPLogistic Procedure.
@@ -36,6 +36,20 @@ For background information, refer to [Mapping Militants](https://cisac.fsi.stanf
 
 ##### OEF-P Notes:
 On September 1, 2017 Secretary of Defense James Mattis designated Operation Pacific Eagle - Philippines as a contingency operation, serving as a continuation of Operation Freedom Eagle. *Page 98 of DOD Operation Pacific Eagle Report (PDF).*
+The operation mainly consisted of training the Armed Forces of the Philippines in counter-terrorism operations as well as supporting humanitarian aid.
+
+Generalized groups consist of the following: 
+- New People's Army (NPA): Armed wing of the Communist Party of the Philippines.
+- Islamic Extremists: Groups following a form of Islamic jihadism.
+- Moro Insurgents: Muslim-majority armed groups focused on establishing independent state in the Philippines.
+- Unknown: Groups with ambiguous names, or groups that lacked any reference online.
+
+##### OEF-HOA Notes:
+Generalized groups consist of the following: 
+- Islamic Extremists: Groups following a form of Islamic jihadism.
+- Regional Militias/Tribes: Ethnic, rebel, or insurgency groups focused on regional interests, such as competing for territory, money, or political power.
+- Political Organization: Groups that are formally recognized political parties.
+- Unknown: Groups with ambiguous names, or groups that lacked any reference online.
 
 ##### OEF-TS Notes:
 The Trans-Sahara Counterterrorism Partnership (TSCTP) is the central U.S. interagency plan to combat terrorism in Trans-Saharan Africa. OEF-TS is the military combat component of TSCTP. Its predecessor is the Pan Sahel Initiative, focusing on Mali, Niger, Chad, and Mauritania as an initial component of the War on Terrorism beginning in 2002. 
@@ -44,7 +58,8 @@ The Trans-Sahara Counterterrorism Partnership (TSCTP) is the central U.S. intera
 - Maghreb: Algeria, Morocco, Tunisia
 - Sub-Sahara: Burkina Faso, Cameroon, Chad, Mali, Mauritania, Niger, Nigeria, Senegal
 
-
-
-
-
+Generalized groups consist of the following: 
+- Islamic Extremists: Groups following a form of Islamic jihadism.
+- Al-Qaida in the Islamic Maghreb (AQIM): Merged with its formally recognized name used prior to 2007. A significant number of attacks were carried out by this group alone.
+- Regional Militias/Tribes: Ethnic, rebel, or insurgency groups focused on regional interests, such as competing for territory, money, or political power.
+- Unknown: Groups with ambiguous names, or groups that lacked any reference online.
