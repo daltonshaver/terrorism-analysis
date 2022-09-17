@@ -11,16 +11,17 @@ As an initial step, I have found the joint probabilities of variable combination
 Final goal could be to build a Bayesian Network based on the foundational framework laid by a logistic regression and Poisson model.
 
 ## Task List
-- Plot attack coordinates using Geopandas. 
+- Plot attack coordinates using Geopandas. (Download all shapefiles.)
 - Accumulate sources to explain why attack success is more volatile in the Philippines than the Horn of Africa.
 - I can analyze the linear combinations with predicted probabilities of 90%> and <10% to find trends, differences, etc.
+	- I can then plot attacks by associated predicted probability. (e.g. attacks with +95% probability of success color-coded by some variable.)
 - Build a more accurate model using ROC Curve, Accuracy Matrix, Residuals (analyze unique combinations), DF Beta (Influence).
 
 ## Research Progress
 - I have created three subsets of data which represent three seperate components of Operation Enduring Freedom (specific mission as a part of the War on Terror). The subsets total 22,507 events. The subsets are:
-	- OEF-P Philippines (Operation Freedom Eagle)
-	- OEF-TS Trans Sahara (Operation Juniper Shield)
-	- OEF-HOA Horn of Africa
+	- OEF-P Philippines (Operation Freedom Eagle), 6,101 attacks
+	- OEF-TS Trans Sahara (Operation Juniper Shield), 9,328 attacks
+	- OEF-HOA Horn of Africa, 7,078 attacks
 - I have begun to examine univariate statistics on all of the variables in each subset.
 - I have created a table of all possible variable combinations and the associated success rate, attack frequency, mean casualties, and total casualties. Using this table, I can determine which specific types of attacks have the highest success/casualty rates. 
 - I have created a High Performance Logistic Regression model that predicts whether the attack will be successful or not. 
@@ -30,6 +31,7 @@ Final goal could be to build a Bayesian Network based on the foundational framew
 
 ## Difficulties
 - I am unsure of the key differences between the SAS Logistic Procedure and the SAS HPLogistic Procedure.
+- Why is the Degrees of Freedom for all variable levels in the Logistic Regression model infinite?
 
 ## Background
 For background information, refer to [Mapping Militants](https://cisac.fsi.stanford.edu/mappingmilitants). This website includes background information on most Islamic State terrorist cells in the world. 
@@ -37,6 +39,7 @@ For background information, refer to [Mapping Militants](https://cisac.fsi.stanf
 ##### OEF-P Notes:
 On September 1, 2017 Secretary of Defense James Mattis designated Operation Pacific Eagle - Philippines as a contingency operation, serving as a continuation of Operation Freedom Eagle. *Page 98 of DOD Operation Pacific Eagle Report (PDF).*
 The operation mainly consisted of training the Armed Forces of the Philippines in counter-terrorism operations as well as supporting humanitarian aid.
+- Only 15 out of 6101 terrorist attacks in the Philippines were suicide attacks.
 
 Generalized groups consist of the following: 
 - New People's Army (NPA): Armed wing of the Communist Party of the Philippines.
@@ -63,3 +66,8 @@ Generalized groups consist of the following:
 - Al-Qaida in the Islamic Maghreb (AQIM): Merged with its formally recognized name used prior to 2007. A significant number of attacks were carried out by this group alone.
 - Regional Militias/Tribes: Ethnic, rebel, or insurgency groups focused on regional interests, such as competing for territory, money, or political power.
 - Unknown: Groups with ambiguous names, or groups that lacked any reference online.
+
+
+
+
+
