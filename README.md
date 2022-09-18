@@ -11,23 +11,23 @@ As an initial step, I have found the joint probabilities of variable combination
 Final goal could be to build a Bayesian Network based on the foundational framework laid by a logistic regression and Poisson model.
 
 ## Task List
-- Plot attack coordinates using Geopandas. (Download all shapefiles.)
 - Accumulate sources to explain why attack success is more volatile in the Philippines than the Horn of Africa.
 - I can analyze the linear combinations with predicted probabilities of 90%> and <10% to find trends, differences, etc.
 	- I can then plot attacks by associated predicted probability. (e.g. attacks with +95% probability of success color-coded by some variable.)
 - Build a more accurate model using ROC Curve, Accuracy Matrix, Residuals (analyze unique combinations), DF Beta (Influence).
 
 ## Research Progress
-- I have created three subsets of data which represent three seperate components of Operation Enduring Freedom (specific mission as a part of the War on Terror). The subsets total 22,507 events. The subsets are:
+- I have created three subsets of data which represent three seperate components of Operation Enduring Freedom (specific mission as a part of the War on Terror). The subsets total 22,506 events. The subsets are:
 	- OEF-P Philippines (Operation Freedom Eagle), 6,101 attacks
 	- OEF-TS Trans Sahara (Operation Juniper Shield), 9,328 attacks
-	- OEF-HOA Horn of Africa, 7,078 attacks
+	- OEF-HOA Horn of Africa, 7,077 attacks
 - I have begun to examine univariate statistics on all of the variables in each subset.
 - I have created a table of all possible variable combinations and the associated success rate, attack frequency, mean casualties, and total casualties. Using this table, I can determine which specific types of attacks have the highest success/casualty rates. 
 - I have created a High Performance Logistic Regression model that predicts whether the attack will be successful or not. 
 	- Predicted probabilities for each subset have been exported into three CSV files.
 	- I have created a table that includes all of the variable levels that are significant (a=0.05) in the model, as well as their associated p-values.
 - I have organized the terrorist groups ("gname" variable) into more generalized groups in order to create a more accurate Logistic Regression model.
+- I have imported all necessary shapefiles, and plotted all attack coordinates for each component of Operation Enduring Freedom.
 
 ## Difficulties
 - I am unsure of the key differences between the SAS Logistic Procedure and the SAS HPLogistic Procedure.
