@@ -9,8 +9,8 @@ oef_ts = pd.read_csv(r'C:\Users\Slaye\Documents\KSU\Research_F22\datasets\oef_ts
 
 #%% Univariate Analysis
 
-def cat_univariate_analysis(var, title, xlabel):
-    table = oef_ts[var].value_counts().sort_index()
+def barchart(dataset, var, title, xlabel):
+    table = dataset[var].value_counts().sort_index()
     table.plot.bar(figsize=(10,6),
                    xlabel=xlabel,
                    ylabel="Number of Attacks",
@@ -19,8 +19,8 @@ def cat_univariate_analysis(var, title, xlabel):
     plt.xticks(rotation=90)
     plt.title(("Bar Chart of " + title), fontsize=15)
 
-def cat_univariate_analysis_long(var, title, xlabel):
-    table = oef_hoa[var].value_counts().sort_values(ascending=False)
+def barchartTop10(dataset, var, title, xlabel):
+    table = dataset[var].value_counts().sort_values(ascending=False)
     table = table[0:10]
     table.plot.bar(figsize=(10,6),
                    xlabel=xlabel,
@@ -29,46 +29,100 @@ def cat_univariate_analysis_long(var, title, xlabel):
                    edgecolor="black")
     plt.xticks(rotation=90)
     plt.title(("Bar Chart of " + title), fontsize=15)
-        #Only shows top 10 frequencies.
+    
+    
 
-def num_univariate_analysis(var):
-    return (oef_p[var].describe())
+#Operation Freedom Eagle - OEF Philippines
+barchart(oef_p, "year", "Attacks by Year", "Year")
+barchart(oef_p, "country", "Attacks by Country", "Country")
+barchart(oef_p, "region", "Attacks by Region", "Region")
+barchartTop10(oef_p, "provstate", "Attacks by Province/Administrative District", "Province")
+barchartTop10(oef_p, "city", "Attacks by City", "City")
+barchart(oef_p, "specificity", "Attacks by Accuracy of Geographic Coordinates", "Accuracy Level")
+barchart(oef_p, "vicinity", "Whether the attack was inside the city 0, or not 1", "In the city Indicator")
+barchart(oef_p, "success", "Attacks by Success 1, or Unsuccessful 0", "Success Indicator")
+barchart(oef_p, "suicide", "Attacks by Suicide", "Suicide Indicator")
+barchart(oef_p, "attacktype1", "Attacks by Attack Method (First Level)", "Attack Type")
+barchart(oef_p, "attacktype2", "Attacks by Attack Method (Secondary Level)", "Attack Type")
+barchart(oef_p, "attacktype2", "Attacks by Attack Method (Tertiary Level)", "Attack Type")
+barchart(oef_p, "targtype1", "Attacks by Target Type", "Target Type")
+barchartTop10(oef_p, "targsubtype1", "Attacks by Specific Target Type", "Sub-Target Type")
+barchartTop10(oef_p, "corp1", "Attacks by Corporate/Agency Enitity", "Corporate/Agency")
+barchartTop10(oef_p, "target1", "Attacks by Specific Target", "Target")
+barchartTop10(oef_p, "natlty1", "Attacks by Nationality", "Nationality")
+barchart(oef_p, "gname", "Attacks by Group", "Group")
+barchartTop10(oef_p, "gsubname", "Attacks by Sub-Group", "Sub-Group")
+oef_p.nperps.describe()
+oef_p.nperpcap.describe()
+barchart(oef_p, "claimed", "Claimed/Unclaimed Attacks", "Claimed Attack")
+barchart(oef_p, "weaptype1", "Attacks by Weapon Type", "Weapon Type") 
+barchart(oef_p, "weapsubtype1", "Attacks by Specific Weapon Type", "Weapon Type")
+oef_p.nkill.describe()
+oef_p.nkillter.describe()
+oef_p.nwound.describe()
+
+#Operation Enduring Freedom - Horn of Africa
+barchart(oef_hoa, "year", "Attacks by Year", "Year")
+barchart(oef_hoa, "country", "Attacks by Country", "Country")
+barchart(oef_hoa, "region", "Attacks by Region", "Region")
+barchartTop10(oef_hoa, "provstate", "Attacks by Province/Administrative District", "Province")
+barchartTop10(oef_hoa, "city", "Attacks by City", "City")
+barchart(oef_hoa, "specificity", "Attacks by Accuracy of Geographic Coordinates", "Accuracy Level")
+barchart(oef_hoa, "vicinity", "Whether the attack was inside the city 0, or not 1", "In the city Indicator")
+barchart(oef_hoa, "success", "Attacks by Success 1, or Unsuccessful 0", "Success Indicator")
+barchart(oef_hoa, "suicide", "Attacks by Suicide", "Suicide Indicator")
+barchart(oef_hoa, "attacktype1", "Attacks by Attack Method (First Level)", "Attack Type")
+barchart(oef_hoa, "attacktype2", "Attacks by Attack Method (Secondary Level)", "Attack Type")
+barchart(oef_hoa, "attacktype2", "Attacks by Attack Method (Tertiary Level)", "Attack Type")
+barchart(oef_hoa, "targtype1", "Attacks by Target Type", "Target Type")
+barchartTop10(oef_hoa, "targsubtype1", "Attacks by Specific Target Type", "Sub-Target Type")
+barchartTop10(oef_hoa, "corp1", "Attacks by Corporate/Agency Enitity", "Corporate/Agency")
+barchartTop10(oef_hoa, "target1", "Attacks by Specific Target", "Target")
+barchartTop10(oef_hoa, "natlty1", "Attacks by Nationality", "Nationality")
+barchart(oef_hoa, "gname", "Attacks by Group", "Group")
+barchartTop10(oef_hoa, "gsubname", "Attacks by Sub-Group", "Sub-Group")
+oef_hoa.nperps.describe()
+oef_hoa.nperpcap.describe()
+barchart(oef_hoa, "claimed", "Claimed/Unclaimed Attacks", "Claimed Attack")
+barchart(oef_hoa, "weaptype1", "Attacks by Weapon Type", "Weapon Type") 
+barchart(oef_hoa, "weapsubtype1", "Attacks by Specific Weapon Type", "Weapon Type")
+oef_hoa.nkill.describe()
+oef_hoa.nkillter.describe()
+oef_hoa.nwound.describe()
+
+
+#Operation Juniper Shield - OEF Trans-Sahara
+barchart(oef_ts, "year", "Attacks by Year", "Year")
+barchart(oef_ts, "country", "Attacks by Country", "Country")
+barchart(oef_ts, "region", "Attacks by Region", "Region")
+barchartTop10(oef_ts, "provstate", "Attacks by Province/Administrative District", "Province")
+barchartTop10(oef_ts, "city", "Attacks by City", "City")
+barchart(oef_ts, "specificity", "Attacks by Accuracy of Geographic Coordinates", "Accuracy Level")
+barchart(oef_ts, "vicinity", "Whether the attack was inside the city 0, or not 1", "In the city Indicator")
+barchart(oef_ts, "success", "Attacks by Success 1, or Unsuccessful 0", "Success Indicator")
+barchart(oef_ts, "suicide", "Attacks by Suicide", "Suicide Indicator")
+barchart(oef_ts, "attacktype1", "Attacks by Attack Method (First Level)", "Attack Type")
+barchart(oef_ts, "attacktype2", "Attacks by Attack Method (Secondary Level)", "Attack Type")
+barchart(oef_ts, "attacktype2", "Attacks by Attack Method (Tertiary Level)", "Attack Type")
+barchart(oef_ts, "targtype1", "Attacks by Target Type", "Target Type")
+barchartTop10(oef_ts, "targsubtype1", "Attacks by Specific Target Type", "Sub-Target Type")
+barchartTop10(oef_ts, "corp1", "Attacks by Corporate/Agency Enitity", "Corporate/Agency")
+barchartTop10(oef_ts, "target1", "Attacks by Specific Target", "Target")
+barchartTop10(oef_ts, "natlty1", "Attacks by Nationality", "Nationality")
+barchart(oef_ts, "gname", "Attacks by Group", "Group")
+barchartTop10(oef_ts, "gsubname", "Attacks by Sub-Group", "Sub-Group")
+oef_ts.nperps.describe()
+oef_ts.nperpcap.describe()
+barchart(oef_ts, "claimed", "Claimed/Unclaimed Attacks", "Claimed Attack")
+barchart(oef_ts, "weaptype1", "Attacks by Weapon Type", "Weapon Type") 
+barchart(oef_ts, "weapsubtype1", "Attacks by Specific Weapon Type", "Weapon Type")
+oef_ts.nkill.describe()
+oef_ts.nkillter.describe()
+oef_ts.nwound.describe()
 
 
 
 
-#Categorical Variables
-cat_univariate_analysis('country', "Attacks by Country", "Country")
-cat_univariate_analysis('region', "Attacks by Region", "Region")
-cat_univariate_analysis_long('provstate', "Attacks by Province/Administrative District", "Province")
-cat_univariate_analysis_long('city', "Attacks by City", "City")
-cat_univariate_analysis('specificity', "Attacks by Accuracy of Geographic Coordinates", "Accuracy Level")
-cat_univariate_analysis('vicinity', "Whether the attack was inside the city 0, or not 1", "In the city Indicator")
-cat_univariate_analysis('success', "Attacks by Success 1, or Unsuccessful 0", "Success Indicator")
-cat_univariate_analysis('suicide', "Attacks by Suicide", "Suicide Indicator")
-cat_univariate_analysis('attacktype1', "Attacks by Attack Method (First Level)", "Attack Type")
-cat_univariate_analysis('attacktype2', "Attacks by Attack Method (Second Level)", "Attack Type")
-cat_univariate_analysis('attacktype3', "Attacks by Attack Type (Third Level)", "Attack Type")
-cat_univariate_analysis('targtype1', "Attacks by Target Type", "Target Type")
-cat_univariate_analysis_long('targsubtype1', "Attacks by Specific Target Type", "Sub-Target Type")
-cat_univariate_analysis_long('corp1', "Attacks by Corporate/Agency Enitity", "Corporate/Agency")
-cat_univariate_analysis_long('target1', "Attacks by Specific Target", "Target")
-cat_univariate_analysis_long('natlty1', "Attacks by Nationality", "Nationality")
-cat_univariate_analysis('gname', "Attacks by Group", "Group")
-cat_univariate_analysis_long('gsubname', "Attacks by Sub-Group", "Sub-Group")
-cat_univariate_analysis('claimed', "Claimed/Unclaimed Attacks", "Claimed Attack")
-cat_univariate_analysis('weaptype1', "Attacks by Weapon Type", "Weapon Type") 
-cat_univariate_analysis('weapsubtype1', "Attacks by Specific Weapon Type", "Weapon Type")
-
-#Numerical Variables
-num_univariate_analysis('year')
-num_univariate_analysis('latitude')
-num_univariate_analysis('longitude')
-num_univariate_analysis('nperps') #MANY entries for nperps is -99 due to the number being unknown.
-num_univariate_analysis('nperpcap')
-num_univariate_analysis('nkill')
-num_univariate_analysis('nkillter')
-num_univariate_analysis('nwound') 
 
 
 
@@ -76,7 +130,8 @@ num_univariate_analysis('nwound')
 
 
 
-def cat_univariate_analysis3(var, title, xlabel):
+
+def barchart3(var, title, xlabel):
     table1 = pd.DataFrame(oef_hoa[var].value_counts().sort_index())
     table2 = pd.DataFrame(oef_p[var].value_counts().sort_index())
     table3 = pd.DataFrame(oef_ts[var].value_counts().sort_index())   
@@ -112,11 +167,11 @@ def cat_univariate_analysis3(var, title, xlabel):
 
 
 
-cat_univariate_analysis3('attacktype1', "Attacks by Attack Method (First Level)", "Attack Type")
-cat_univariate_analysis3('success', "Attacks by Success 1, or Unsuccessful 0", "Success Indicator")
-cat_univariate_analysis3('suicide', "Attacks by Suicide", "Suicide Indicator")
-cat_univariate_analysis3('targtype1', "Attacks by Target Type", "Target Type")
-cat_univariate_analysis3('weaptype1', "Attacks by Weapon Type", "Weapon Type") 
+barchart3('attacktype1', "Attacks by Attack Method (First Level)", "Attack Type")
+barchart3('success', "Attacks by Success 1, or Unsuccessful 0", "Success Indicator")
+barchart3('suicide', "Attacks by Suicide", "Suicide Indicator")
+barchart3('targtype1', "Attacks by Target Type", "Target Type")
+barchart3('weaptype1', "Attacks by Weapon Type", "Weapon Type") 
 
 
 
@@ -199,6 +254,21 @@ def cat_univariate_attacktype(var, title, xlabel):
     plt.xticks(rotation=90)
     plt.title(("Bar Chart of " + title), fontsize=15)
 
+
+def barchart_long(var, title, xlabel):
+    table = oef_hoa[var].value_counts().sort_values(ascending=False)
+    table = table[0:10]
+    table.plot.bar(figsize=(10,6),
+                   xlabel=xlabel,
+                   ylabel="Number of Attacks",
+                   color="slategrey",
+                   edgecolor="black")
+    plt.xticks(rotation=90)
+    plt.title(("Bar Chart of " + title), fontsize=15)
+        #Only shows top 10 frequencies.
+
+def num_univariate_analysis(var):
+    return (oef_p[var].describe())
 
 
 
