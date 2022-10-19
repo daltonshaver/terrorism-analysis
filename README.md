@@ -1,21 +1,29 @@
 # Main Research Focus
-The main focus of the research is to determine the specific type of attacks that result in the highest success and/or casualty rates. Because of the high number of categorical variables, an analysis dealing with discrete probabilities would be really effective. On a conceptual level, I would like to pinpoint the exact combinations that grant the maximum success/casualty rates using some form of optimization. 
+The main focus of the research is to determine the similarities and differences of attacks with a high probability of success in three separate Operation Enduring Freedom Area of Operations (AOR). the specific type of attacks that result in the highest success. 
+Because of the high number of categorical variables, an analysis dealing with discrete probabilities would be really effective. On a conceptual level, I would like to pinpoint the exact combinations that grant the maximum success/casualty rates using some form of optimization. 
+
+## Why do we care?
+Insights -> Training -> Increased Mission Effectiveness
+
+By determining the type of attacks that result in the highest success rate, partner nations can focus training and operations on responding and preventing terrorist attacks that are most likely to occur. This will increase military and intelligence efficiency, save money, and most importantly, save lives. 
+
+"Improving basic infantry and special forces skills (i.e., marksmanship, communications, first aid, vehicle maintenance, air mobility, ground mobility, raids, closequarters battle, long-range reconnaissance, and hostage rescue)." -CNA TSCTP pdf
+
+"Effective counter-terrorism strategies must be risk-based, intelligence-driven and comprehensive, employing all elements and aspects of national and international security functions, measures and operations." - NATO CT Reference Curriculum Page 95
+"Counter-terrorism operations rely heavily on detailed and actionable information to successfully dismantle terrorist networks." - NATO CT Reference Curriculum Page 103
 
 ## Methods
-I will be implementing a [[Logistic Regression]] model as well as a [[Poisson Regression]] model and a Zero Inflated Poisson Regression model. The Logistic Regression model will determine the probability of an attack being successful using a linear combination of multiple independent variables. The Zero Inflated Poisson model will determine the probability distribution of casualty counts. It takes into account the significant number of zeros present in the 'nkill' variable.
-
 This analysis will focus on comparing and contrasting three components of Operation Enduring Freedom (OEF). Each component represents an Area of Operations that is focused on combatting terrorism within select countries. This allows me to compare how terrorist attacks differ according to geography, group structure, and political situations. 
 
-As an initial step, I have found the joint probabilities of variable combinations (sum to 1). I can then aggregate those specific combinations with success or casualties. It would require an optimization model to find the combinations (potentially hundreds of millions) with maximum success/casualty rates. With these results, I would be able to confidently argue which areas of counterterrorism measures are needed most, and which measures are not worth budgeting for. 
+I will be implementing a [[Logistic Regression]] model. The Logistic Regression model will predict whether an attack was either successful or unsuccessful based on the predictor variables *suicide*, *vicinity*, *gname*, *attacktype1*, *targtype1*, *weaptype1*, and *country*. I will also use the associated predicted probabilities for each observation determined from the Logistic Regression model.
 
-Final goal could be to build a Bayesian Network based on the foundational framework laid by a logistic regression and Poisson model.
+I will examine the frequency counts of each predictor variable for terrorist attacks with a predicted probability of 95% or greater. Using grouped bar charts, I will stratify each predictor variable by mission to compare similarities and differences of what makes terrorist attacks successful. With these results, I would be able to confidently argue which aspects of counterterrorism measures are needed most.
+
+Further research will involve a Zero Inflated [[Poisson Regression]] model. This model will determine the probability distribution of casualty counts. It takes into account the significant number of zeros present in the 'nkill' variable.
 
 ## Task List
-- **Compute the accuracy of my models (confusion matrix + model validation metrics).**
-- Accumulate sources to explain why attack success is more volatile in the Philippines than the Horn of Africa.
-- I can analyze the linear combinations with predicted probabilities of 90%> and <10% to find trends, differences, etc.
-	- I can then plot attacks by associated predicted probability. (e.g. attacks with +95% probability of success color-coded by some variable.)
-- Build a more accurate model using ROC Curve, Accuracy Matrix, Residuals (analyze unique combinations), DF Beta (Influence).
+- Clean up graphics. Find a way to plot *gname* and *country*.
+- 
 
 ## Research Progress
 - I have created three subsets of data which represent three seperate components of Operation Enduring Freedom (specific mission as a part of the War on Terror). The subsets total 22,506 events. The subsets are:
@@ -24,22 +32,25 @@ Final goal could be to build a Bayesian Network based on the foundational framew
 	- OEF-HOA Horn of Africa, 7,077 attacks
 - I have examined univariate statistics on all of the variables in each subset.
 -  I have organized the terrorist groups ("gname" variable) into more generalized groups in order to create a more accurate Logistic Regression model.
-- I have created a High Performance Logistic Regression model that predicts whether the attack will be successful or not. 
+- I have created a High Performance Logistic Regression model that predicts whether the attack will be successful or unsuccessful. 
 	- Predicted probabilities for each subset have been exported into three CSV files.
 	- I have created a tables that includes all of the coefficient estimates, standard errors, Degrees of Freedom, t values, p-values, and calculated odds.
-- I have created bar charts examining the distributions of attacks with a predicted probability of 95% or greater. These can be used to determine similarities/differences in the success of varying components of a terrorist attack in three separate regions of the world.
-- I have imported all necessary shapefiles, and plotted all attack coordinates for each component of Operation Enduring Freedom.
+- I have created bar charts examining the **distributions of attacks with a predicted probability of 95% or greater**. These can be used to determine similarities/differences in the success of varying components of a terrorist attack in three separate regions of the world.
+- I have created two maps (Africa, Philippines) displaying the geographic distribution of attacks, colored by success.
+- I have created a graphic showing the ROC-AUC Curves stratified by mission.
 
 ## Difficulties
 - I am unsure of the key differences between the SAS Logistic Procedure and the SAS HPLogistic Procedure.
-- The predicted probabilities potentially have quite a bit of uncertainty, and would be accurate when describing them as confidence intervals.
+- Need a concise way to explain ROC curves.
 
 ## Problems Solved
 - Why is the Degrees of Freedom for all variable levels in the Logistic Regression model infinite?
 		- This is the default option for the HPLOGISTIC procedure in SAS, using the z distribution. Setting the DDFM model option to DDFM=RESIDUAL sets the DF to a finite value allowing the use of a t distibution. The two methods are almost identical when using a large sample.
 
 ## Background
-For background information, refer to [Mapping Militants](https://cisac.fsi.stanford.edu/mappingmilitants). This website includes background information on most Islamic State terrorist cells in the world. 
+Over $600 billion spent on Afghanistan/OEF Global War on Terror since 2001. 
+100,000+ U.S. troops deployed in Afghanistan/OEF region.
+	Can't use these numbers as they refer to mostly Middle East countries, need to find specific numbers for selected AORs.
 
 ##### OEF-P Notes:
 On September 1, 2017 Secretary of Defense James Mattis designated Operation Pacific Eagle - Philippines as a contingency operation, serving as a continuation of Operation Freedom Eagle. *Page 98 of DOD Operation Pacific Eagle Report (PDF).*
@@ -72,6 +83,7 @@ Generalized groups consist of the following:
 - Regional Militias/Tribes: Ethnic, rebel, or insurgency groups focused on regional interests, such as competing for territory, money, or political power.
 - Unknown: Groups with ambiguous names, or groups that lacked any reference online.
 
+For background information, refer to [Mapping Militants](https://cisac.fsi.stanford.edu/mappingmilitants). This website includes background information on most Islamic State terrorist cells in the world. 
 
 ## Results
 - Intepretations: 
