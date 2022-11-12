@@ -7,15 +7,21 @@ oef_p = pd.read_csv(r'C:\Users\Slaye\Documents\KSU\Research_F22\datasets\oef_p.c
 oef_hoa = pd.read_csv(r'C:\Users\Slaye\Documents\KSU\Research_F22\datasets\oef_hoa.csv')
 oef_ts = pd.read_csv(r'C:\Users\Slaye\Documents\KSU\Research_F22\datasets\oef_ts.csv')
 
-#%% Mapping
+#%% Setting Parameters
 
 mapcolor_hoa = "#EBE4A9"
 mapcolor_p = "#f4f0cf" #DEF0F7
 mapcolor_ts = "#F3BE9E"
 outsidecolor = "lightgrey"
+
+fontsize_labels = 16
+fontsize_title = 22
+
 countrylinewidth = 0.25
 pointsize=5
-success_colors = {0:'#FF0000', 1:'#7CAD91'} #cccccccc #b4d0c0
+success_colors = {0:'#FF0000', 1:'#7CAD91'}
+
+#%% Philippines Map
 
 #Importing in Philippines shapefile
 philippines = gpd.read_file(r'C:\Users\Slaye\Documents\KSU\Research_F22\shapefiles\philippines\philippines.shp')
@@ -24,8 +30,14 @@ philippines = gpd.read_file(r'C:\Users\Slaye\Documents\KSU\Research_F22\shapefil
 f, ax = plt.subplots(figsize=(14,20))
 philippines.plot(color=mapcolor_p, ax=ax, edgecolor='black', linewidth=countrylinewidth)
 ax.scatter(oef_p['longitude'], oef_p['latitude'], c=oef_p['success'].map(success_colors), s=pointsize)
+plt.title("Figure 2: Map of Terrorist Attacks by Success - Philippines", fontsize=fontsize_title)
+plt.xlabel("Longitude", fontsize=fontsize_labels)
+plt.ylabel("Latitude", fontsize=fontsize_labels)
         #Legend does not work.
         #Copy and paste the legend from 'groupBarChartCountry()' onto the map in word doc.
+
+
+#%% Trans-Sahara & Horn of Africa Map
 
 #Importing in Trans-Sahara shapefiles
 algeria = gpd.read_file(r'C:\Users\Slaye\Documents\KSU\Research_F22\shapefiles\trans_sahara\algeria.shp')
@@ -79,7 +91,6 @@ nigeria.plot(color=mapcolor_ts, ax=ax, edgecolor='black', linewidth=countrylinew
 senegal.plot(color=mapcolor_ts, ax=ax, edgecolor='black', linewidth=countrylinewidth)
 tunisia.plot(color=mapcolor_ts, ax=ax, edgecolor='black', linewidth=countrylinewidth)
 ax.scatter(oef_ts['longitude'], oef_ts['latitude'], c=oef_ts['success'].map(success_colors), s=pointsize)
-plt.legend()
 
 #Plotting Horn of Africa countries
 djibouti.plot(color=mapcolor_hoa, ax=ax, edgecolor='black', linewidth=countrylinewidth)
@@ -90,6 +101,9 @@ somalia.plot(color=mapcolor_hoa, ax=ax, edgecolor='black', linewidth=countryline
 south_sudan.plot(color=mapcolor_hoa, ax=ax, edgecolor='black', linewidth=countrylinewidth)
 sudan.plot(color=mapcolor_hoa, ax=ax, edgecolor='black', linewidth=countrylinewidth)
 ax.scatter(oef_hoa['longitude'], oef_hoa['latitude'], c=oef_hoa['success'].map(success_colors), s=pointsize)
+plt.title("Figure 1: Map of Terrorist Attacks by Success - Trans-Sahara & Horn of Africa", fontsize=fontsize_title)
+plt.xlabel("Longitude", fontsize=fontsize_labels)
+plt.ylabel("Latitude", fontsize=fontsize_labels)
 
 #Plotting surrounding countries:
 benin.plot(color=outsidecolor, ax=ax, edgecolor='black', linewidth=countrylinewidth)

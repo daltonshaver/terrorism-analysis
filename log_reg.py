@@ -19,11 +19,11 @@ roc_ts["Mission"] = "TransSahara"
 roc = roc_hoa.append([roc_p, roc_ts])
 
 #Plotting the stratified ROC-AUC Curves for the three Logistic Regression Models
-plt.figure(figsize=(14,14))
+plt.figure(figsize=(6,6))
 ax = sns.lineplot(x="FPF", y="TPF", hue="Mission", data=roc, legend=True, palette=dict(HOA="#EBE4A9", Philippines="#7CA5BE", TransSahara="#F3BE9E"), lw=3)
-plt.setp(ax.get_legend().get_texts(), fontsize='16')
-plt.setp(ax.get_legend().get_title(), fontsize='20')
-plt.title("ROC Curves For Three Logistic Regression Models Predicting Success", fontsize=18)
+plt.setp(ax.get_legend().get_texts())
+plt.setp(ax.get_legend().get_title())
+plt.title("Figure 3: ROC Curves For Three Logistic\nRegression Models Predicting Success", fontsize=16)
 plt.xlabel("False Positive Rate (Sensitivity)", fontsize=14)
 plt.xticks(fontsize=12)
 plt.ylabel("True Positive Rate (1 - Specificity)", fontsize=14)

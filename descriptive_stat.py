@@ -121,7 +121,36 @@ oef_ts.nkill.describe()
 oef_ts.nkillter.describe()
 oef_ts.nwound.describe()
 
+table = prob_grouped.groupby('vicinity')['Pred'].value_counts()
+barchart(table, 'Pred', "Vicinity", "Vicinity")
 
+
+
+
+
+
+
+
+#Stacked bar chart of terrorist attacks by year.
+fig, ax = plt.subplots(1, figsize=(18,14))
+
+x = np.arange(start=0, stop=2*len(oef_hoa['year'].value_counts()), step=2)
+table1 = oef_hoa['year'].value_counts().sort_index()
+table2 = oef_p['year'].value_counts().sort_index()
+table3 = oef_ts['year'].value_counts().sort_index()
+
+plt.bar(x, table1, color='#EBE4A9')
+plt.bar(x, table2, bottom=table1, color='#7CA5BE')
+plt.bar(x, table3, bottom=table1+table2, color='#F3BE9E')
+
+line1 = oef_hoa.groupby('year')['nkill'].sum().sort_index()
+line2 = oef_p.groupby('year')['nkill'].sum().sort_index()
+line3 = oef_ts.groupby('year')['nkill'].sum().sort_index()
+
+plt.plot(x, line1, color='#EBE4A9')
+plt.plot(x, line2, color='#7CA5BE')
+plt.plot(x, line3, color='#F3BE9E')
+    #Place on two y axes.
 
 
 
@@ -258,13 +287,14 @@ def bivariate_success_relative(var, title):
 bivariate_success('year', 'Stacked Bar Chart of Success by Year')
 
 bivariate_success_relative('gname', 'Success by Group')
-bivariate_success_relative('attacktype1_txt', 'Success by Attack Type')
+bivariate_success_relative('attacktype1', 'Success by Attack Type')
 bivariate_success_relative('targtype1_txt', 'Success by Target Type')
 bivariate_success_relative('targsubtype1_txt', 'Success by Target Sub Type')
         #Needs to be expanded figsize(20,6)
 bivariate_success_relative('suicide', 'Success by Suicide Attack')
 bivariate_success_relative('weaptype1_txt', 'Success by Weapon')
 bivariate_success_relative('year', 'Success by Year')
+bivariate_success_relative('country', 'Success by Country')
 
 corr_matrix = df.corr()
 test = df.groupby(['gname', 'attacktype1_txt']).agg({'success': ['mean', 'min', 'max']})
