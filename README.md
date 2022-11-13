@@ -1,29 +1,21 @@
-# Main Research Focus
-The main focus of the research is to determine the similarities and differences of attacks with a high probability of success in three separate Operation Enduring Freedom Area of Operations (AOR). the specific type of attacks that result in the highest success. 
-Because of the high number of categorical variables, an analysis dealing with discrete probabilities would be really effective. On a conceptual level, I would like to pinpoint the exact combinations that grant the maximum success/casualty rates using some form of optimization. 
+## Abstract
+This research examines how the characteristics of terrorist attacks predict the chance of an attack succeeding, where an attack is defined as successful if the intended attack type is carried out. Data from The Global Terrorism Database was analyzed across three geographical missions within Operation Enduring Freedom: Trans-Sahara, Horn of Africa, and the Philippines. The three models were able to distinguish between successful and unsuccessful attacks at 78.74%, 82.11%, 74.25%, respectively. Using predicted probabilities of success obtained from each logistic regression model, the medians were plotted to compare the characteristics of terrorist attacks across missions. The coefficients for each model were analyzed to compare the odds of success for each variable level to the odds of success of the reference level for that variable. The coordinates for successful and unsuccessful attacks as classified by the dataset were plotted to explore spatial patterns in regional maps. Many insights were gathered through analyzing Operation Enduring Freedom missions. For all three Operation Enduring Freedom missions, attacks involving Barricade Incidents, Unarmed Assaults, Infrastructure Attacks, and Incendiary weapons are predicted to have the highest probability of success. Additionally, the two most prevalent regional ethnic groups in the Trans-Sahara and Horn of Africa have higher predicted probabilities compared to jihadist organizations, in contrast to the Philippines, where attacks by Islamic Extremists have the highest probability of succeeding. Furthermore, attacks targeting private citizens, tourists, non-governmental organizations, and food or water supply, have the largest probability of success for the Trans-Sahara and Horn of Africa regions, whereas suicide attacks in the Philippines raise the chance of success. By determining the specific characteristics of attacks that produce the highest probabilities of success, the effectiveness of Operation Enduring Freedom can be improved by focusing counter-terrorism training and operations on the features that predict successful attacks.
 
 ## Why do we care?
+By determining the type of attacks that result in the highest success rate, partner nations can focus training and operations on responding and preventing terrorist attacks that are most likely to occur. Some of these terrorist groups maintain "de facto control significant portions of the country, particularly in south-central Somalia, continuing to move freely, collect “taxes,” and exert governing authority in the areas under its control" (US Department of State Country Report 2019 Somalia). In Somolia, UN and other agencies cannot deliver aid and food to region because of terrorist groups blockading routes.
+
+There is a key difference in how people picture terrorism; Many of these countries are currently battling terrorists and militants on the ground in conventional combat over the country's territory and resources. An important theme I have seen while reading sources is that there is a severe lack of military competence among partner nations in West and East Africa. Many forces do not have the capability to effectively fight these terrorist groups as they are often riddled with corruption (Warner, CNA Capacity Building Publication). Counterterrorism efforts such as "... basic infantry and special forces skills (i.e., marksmanship, communications, first aid, vehicle maintenance, air mobility, ground mobility, raids, closequarters battle, long-range reconnaissance, and hostage rescue)" can be directly improved by providing actionable intelligence to these units. 
+
 Insights -> Training -> Increased Mission Effectiveness
 
-By determining the type of attacks that result in the highest success rate, partner nations can focus training and operations on responding and preventing terrorist attacks that are most likely to occur. This will increase military and intelligence efficiency, save money, and most importantly, save lives. 
-
-"Improving basic infantry and special forces skills (i.e., marksmanship, communications, first aid, vehicle maintenance, air mobility, ground mobility, raids, closequarters battle, long-range reconnaissance, and hostage rescue)." -CNA TSCTP pdf
-
-"Effective counter-terrorism strategies must be risk-based, intelligence-driven and comprehensive, employing all elements and aspects of national and international security functions, measures and operations." - NATO CT Reference Curriculum Page 95
-"Counter-terrorism operations rely heavily on detailed and actionable information to successfully dismantle terrorist networks." - NATO CT Reference Curriculum Page 103
+"Effective counter-terrorism strategies must be risk-based, intelligence-driven and comprehensive, employing all elements and aspects of national and international security functions, measures and operations" (NATO Counter-Terrorism Reference Curriculum 2020, p. 95).
 
 ## Methods
-This analysis will focus on comparing and contrasting three components of Operation Enduring Freedom (OEF). Each component represents an Area of Operations that is focused on combatting terrorism within select countries. This allows me to compare how terrorist attacks differ according to geography, group structure, and political situations. 
+This analysis will focus on comparing and contrasting three components of Operation Enduring Freedom (OEF). Each component represents an Area of Operations that is focused on combatting terrorism within select countries. This allows me to compare which features of terrorist attacks are most successful according to geography.
 
-I will be implementing a [[Logistic Regression]] model. The Logistic Regression model will predict whether an attack was either successful or unsuccessful based on the predictor variables *suicide*, *vicinity*, *gname*, *attacktype1*, *targtype1*, *weaptype1*, and *country*. I will also use the associated predicted probabilities for each observation determined from the Logistic Regression model.
+I will be implementing a [[Logistic Regression]] model. The Logistic Regression model will predict whether an attack was either successful or unsuccessful based on the predictor variables *suicide*, *vicinity*, *gname*, *attacktype1*, *targtype1*, *weaptype1*, and *country*. I will also use the associated predicted probabilities for each observation determined from the Logistic Regression model. Using stratified point plots, I will examine the predicted probabilities of each individual attack feature and compare and contrast these by mission area. 
 
-I will examine the frequency counts of each predictor variable for terrorist attacks with a predicted probability of 95% or greater. Using grouped bar charts, I will stratify each predictor variable by mission to compare similarities and differences of what makes terrorist attacks successful. With these results, I would be able to confidently argue which aspects of counterterrorism measures are needed most.
-
-Further research will involve a Zero Inflated [[Poisson Regression]] model. This model will determine the probability distribution of casualty counts. It takes into account the significant number of zeros present in the 'nkill' variable.
-
-## Task List
-- Clean up graphics. Find a way to plot *gname* and *country*.
-- 
+Further research may involve a Zero Inflated [[Poisson Regression]] model. This model could determine the probability distribution of casualty counts. It takes into account the significant number of zeros present in the 'nkill' variable.
 
 ## Research Progress
 - I have created three subsets of data which represent three seperate components of Operation Enduring Freedom (specific mission as a part of the War on Terror). The subsets total 22,506 events. The subsets are:
@@ -38,19 +30,14 @@ Further research will involve a Zero Inflated [[Poisson Regression]] model. This
 - I have created bar charts examining the **distributions of attacks with a predicted probability of 95% or greater**. These can be used to determine similarities/differences in the success of varying components of a terrorist attack in three separate regions of the world.
 - I have created two maps (Africa, Philippines) displaying the geographic distribution of attacks, colored by success.
 - I have created a graphic showing the ROC-AUC Curves stratified by mission.
-
-## Difficulties
-- I am unsure of the key differences between the SAS Logistic Procedure and the SAS HPLogistic Procedure.
-- Need a concise way to explain ROC curves.
+- I have used point plots stratified by OEF mission to display median predicted probabilities of success for each variable level.
+- I have drawn conclusion based on the median predicted probabilities as to which characteristics of terrorist attacks are most likely to predict a successful attack.
 
 ## Problems Solved
 - Why is the Degrees of Freedom for all variable levels in the Logistic Regression model infinite?
 		- This is the default option for the HPLOGISTIC procedure in SAS, using the z distribution. Setting the DDFM model option to DDFM=RESIDUAL sets the DF to a finite value allowing the use of a t distibution. The two methods are almost identical when using a large sample.
 
 ## Background
-Over $600 billion spent on Afghanistan/OEF Global War on Terror since 2001. 
-100,000+ U.S. troops deployed in Afghanistan/OEF region.
-	Can't use these numbers as they refer to mostly Middle East countries, need to find specific numbers for selected AORs.
 
 ##### OEF-P Notes:
 On September 1, 2017 Secretary of Defense James Mattis designated Operation Pacific Eagle - Philippines as a contingency operation, serving as a continuation of Operation Freedom Eagle. *Page 98 of DOD Operation Pacific Eagle Report (PDF).*
@@ -85,22 +72,21 @@ Generalized groups consist of the following:
 
 For background information, refer to [Mapping Militants](https://cisac.fsi.stanford.edu/mappingmilitants). This website includes background information on most Islamic State terrorist cells in the world. 
 
-## Results
-- Intepretations: 
-	- Nearly 50% of attacks with an extremely high predicted chance of success (95%) are kidnappings in the Philippines.
-	- Approximately 90% of attacks with a predicted probability of success greater than 95% are located inside a city rather on the outskirts of a city for all three regions analyzed.
-	- Over 95% of attacks with an extremely high predicted probability of success (95%) are non-suicide attacks for the Horn of Africa, Trans-Sahara, and Philippines mission components.
+## Notes
+- 10/21: Multiple people killed and kidnapped at a hospital in Nigeria by militants.
+- 10/30: "At least 100 people were killed in the car bomb attacks in Somalia's capital" (NPR Document in Google Drive)
 
+I removed the Unknown levels from final results of the analysis of attacks due to there being no relevant insights gained from it. I also removed "Other" in Weapon Types for the same reason.
 
-## Further Notes
-**_This means if the probability of an event happening is >0.5 we usually consider the event to happen or in other words if the chances of an event happening are more than 50% then we can claim that the event will take place, i.e., in this case, it will rain._**
+Interpretations:
+- 50% of the philippines suicide have over 83% predicted probability of success, 
+- 50% of the philippines attack that use suicide have there chance of success being over 92%. 
+- There is a ...% chance that the model will be able to distinguish between successful attacks and unsuccessful attacks.
+- I can conclude that changes in the characteristics of an attack are associated with changes in the probability that the attack is successful.
 
-Add 2 digit labels to bar charts.
-Make bars wider.
-Raise font size.
-Put x axis label in all caps.
-Change labels
+## Flash Presentation:
+**"Terrorists aim to terrorize."**
+- Use maps.
+- "Join me..."
+- Include variables that I am using to predict success.
 
-
-
-Will remove the Unknown level from final results of the summary analysis of attacks with <= 95% predicted success chance due to there being no relevant insights gained from it. (Also removed "Other" in Weapon Types for the same reason).
