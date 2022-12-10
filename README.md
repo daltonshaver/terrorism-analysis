@@ -80,15 +80,3 @@ For background information, refer to [Mapping Militants](https://cisac.fsi.stanf
 
 I removed the Unknown levels from final results of the analysis of attacks due to there being no relevant insights gained from it. I also removed "Other" in Weapon Types for the same reason.
 
-Interpretations:
-- 50% of the philippines suicide have over 83% predicted probability of success, 
-- 50% of the philippines attack that use suicide have there chance of success being over 92%. 
-- There is a ...% chance that the model will be able to distinguish between successful attacks and unsuccessful attacks.
-- I can conclude that changes in the characteristics of an attack are associated with changes in the probability that the attack is successful.
-
-## Flash Presentation:
-**"Terrorists aim to terrorize."**
-- Use maps.
-- "Join me..."
-- Include variables that I am using to predict success.
-
