@@ -1,32 +1,32 @@
 import pandas as pd
 
-oef_p = pd.read_csv(r'C:\Users\Slaye\Documents\KSU\Research_F22\datasets\oef_p0.csv')
-oef_hoa = pd.read_csv(r'C:\Users\Slaye\Documents\KSU\Research_F22\datasets\oef_hoa0.csv')
-oef_ts = pd.read_csv(r'C:\Users\Slaye\Documents\KSU\Research_F22\datasets\oef_ts0.csv')
+oef_p = pd.read_csv(r'C:\Users\Slaye\Documents\KSU\Research_F22\datasets\oef_p_revised.csv')
+oef_hoa = pd.read_csv(r'C:\Users\Slaye\Documents\KSU\Research_F22\datasets\oef_hoa_revised.csv')
+oef_ts = pd.read_csv(r'C:\Users\Slaye\Documents\KSU\Research_F22\datasets\oef_ts_revised.csv')
 
 '''Organizing terrorist groups into more generalized groups.'''
-#Operation Freedom Eagle - OEF Philippines
+# Operation Freedom Eagle - OEF Philippines
 oef_p['gname'] = oef_p['gname'].replace(["Left-wing extremists",
-                                         "Aniban ng Ayaw sa Komunista (ANAK) ", 
+                                         "Aniban ng Ayaw sa Komunista (ANAK) ",
                                          "Partido Marxista-Leninista ng Pilipinas (PMLP)",
                                          "Communists",
                                          "Alex Boncayao Brigade (ABB)",
                                          "Magahat Militia",
                                          "New Indigenous People's Army",
                                          "National Democratic Front-Bicol (NDF-Bicol)",
-                                         "Bangsamoro National Liberation Army"], 
-                                        ["New People's Army (NPA)", 
-                                         "New People's Army (NPA)", 
+                                         "Bangsamoro National Liberation Army"],
+                                        ["New People's Army (NPA)",
                                          "New People's Army (NPA)",
                                          "New People's Army (NPA)",
                                          "New People's Army (NPA)",
                                          "New People's Army (NPA)",
                                          "New People's Army (NPA)",
                                          "New People's Army (NPA)",
-                                         "New People's Army (NPA)",])
+                                         "New People's Army (NPA)",
+                                         "New People's Army (NPA)"])
 
-oef_p['gname'] = oef_p['gname'].replace(["Kilafah Islamic Movement", 
-                                         "Jundul Khilafah (Philippines)", 
+oef_p['gname'] = oef_p['gname'].replace(["Kilafah Islamic Movement",
+                                         "Jundul Khilafah (Philippines)",
                                          "Alcubar group",
                                          "East Asia Division of the Islamic State",
                                          "Al-Khobar",
@@ -35,7 +35,7 @@ oef_p['gname'] = oef_p['gname'].replace(["Kilafah Islamic Movement",
                                          "Muslim extremists",
                                          "Muslim Separatists",
                                          "Ansar Al-Khilafa (Philippines)",
-                                         "Islamic State of Iraq and the Levant (ISIL)"], 
+                                         "Islamic State of Iraq and the Levant (ISIL)"],
                                         ["Islamic Extremists",
                                          "Islamic Extremists",
                                          "Islamic Extremists",
@@ -57,14 +57,13 @@ oef_p['gname'] = oef_p['gname'].replace(["Moro Ghuraba",
                                          "Moro Insurgents",
                                          "Moro Insurgents"])
 
-
-oef_p['gname'] = oef_p['gname'].replace(["Rebels", 
-                                         "Muslim Rebels", 
+oef_p['gname'] = oef_p['gname'].replace(["Rebels",
+                                         "Muslim Rebels",
                                          "Gunmen",
                                          "Farmer's Movement of the Philippines (KMP)",
                                          "Pentagon Kidnap Group",
                                          "Young Officer Union of the New Generation and Reformist Armed Forces of the Philippines (YOU-RAFP)",
-                                         "Kawal ng Pilipinas (Soldier of the Philippines)"], 
+                                         "Kawal ng Pilipinas (Soldier of the Philippines)"],
                                         ["Unknown",
                                          "Unknown",
                                          "Unknown",
@@ -73,10 +72,9 @@ oef_p['gname'] = oef_p['gname'].replace(["Rebels",
                                          "Unknown",
                                          "Unknown"])
 
-
-#Operation Enduring Freedom - Horn of Africa
-oef_hoa['gname'] = oef_hoa['gname'].replace(["Muslim extremists", 
-                                             "Sunni Muslim extremists", 
+# Operation Enduring Freedom - Horn of Africa
+oef_hoa['gname'] = oef_hoa['gname'].replace(["Muslim extremists",
+                                             "Sunni Muslim extremists",
                                              "Somali Islamic Front",
                                              "Hizbul al Islam (Somalia)",
                                              "Raskamboni Movement",
@@ -102,8 +100,8 @@ oef_hoa['gname'] = oef_hoa['gname'].replace(["Muslim extremists",
                                              "Islamic Extremists",
                                              "Islamic Extremists"])
 
-oef_hoa['gname'] = oef_hoa['gname'].replace(["Tribesmen", 
-                                             "Misseriya Arab Tribesmen", 
+oef_hoa['gname'] = oef_hoa['gname'].replace(["Tribesmen",
+                                             "Misseriya Arab Tribesmen",
                                              "Merille Militia",
                                              "Shabelle Valley militia",
                                              "Zaghawa extremists",
@@ -136,7 +134,7 @@ oef_hoa['gname'] = oef_hoa['gname'].replace(["Tribesmen",
                                              "Awdal Regional Administration Army (ARAA)",
                                              "Murle Tribe",
                                              "Lord's Resistance Army (LRA)",
-                                             "Amhara militia"], 
+                                             "Amhara militia"],
                                             ["Regional Militias/Tribes",
                                              "Regional Militias/Tribes",
                                              "Regional Militias/Tribes",
@@ -173,7 +171,7 @@ oef_hoa['gname'] = oef_hoa['gname'].replace(["Tribesmen",
                                              "Regional Militias/Tribes",
                                              "Regional Militias/Tribes"])
 
-oef_hoa['gname'] = oef_hoa['gname'].replace(["Patriotic Ginbot 7 Movement for Unity and Democracy (PGMUD)", 
+oef_hoa['gname'] = oef_hoa['gname'].replace(["Patriotic Ginbot 7 Movement for Unity and Democracy (PGMUD)",
                                              "Sudanese People's Front",
                                              "Political Organization",
                                              "Oromo Liberation Front",
@@ -184,7 +182,7 @@ oef_hoa['gname'] = oef_hoa['gname'].replace(["Patriotic Ginbot 7 Movement for Un
                                              "Afar Revolutionary Democratic Unity Front",
                                              "Eritrean Salvation Front (ESF)",
                                              "Red Sea Afar Democratic Organization (RSADO)",
-                                             "Front for the Restoration of Unity and Democracy", 
+                                             "Front for the Restoration of Unity and Democracy",
                                              "All Ethiopian Unity Party (AEUP)"],
                                             ["Political Organization",
                                              "Political Organization",
@@ -200,8 +198,8 @@ oef_hoa['gname'] = oef_hoa['gname'].replace(["Patriotic Ginbot 7 Movement for Un
                                              "Political Organization",
                                              "Political Organization"])
 
-oef_hoa['gname'] = oef_hoa['gname'].replace(["Gunmen", 
-                                             "Militia Members", 
+oef_hoa['gname'] = oef_hoa['gname'].replace(["Gunmen",
+                                             "Militia Members",
                                              "Government Supporters",
                                              "Pirates",
                                              "Rebels",
@@ -213,10 +211,9 @@ oef_hoa['gname'] = oef_hoa['gname'].replace(["Gunmen",
                                              "Unknown",
                                              "Unknown"])
 
-
-#Operation Juniper Shield - OEF Trans-Sahara
-oef_ts['gname'] = oef_ts['gname'].replace(["Algerian Islamic Extremists", 
-                                           "Muslim extremists", 
+# Operation Juniper Shield - OEF Trans-Sahara
+oef_ts['gname'] = oef_ts['gname'].replace(["Algerian Islamic Extremists",
+                                           "Muslim extremists",
                                            "Islamist extremists",
                                            "Armed Islamic Group (GIA)",
                                            "Salafia Jihadia",
@@ -279,8 +276,8 @@ oef_ts['gname'] = oef_ts['gname'].replace(["Algerian Islamic Extremists",
 oef_ts['gname'] = oef_ts['gname'].replace(["Salafist Group for Preaching and Fighting (GSPC)"],
                                           ["Al-Qaida in the Islamic Maghreb (AQIM)"])
 
-oef_ts['gname'] = oef_ts['gname'].replace(["Ijaw extremists", 
-                                           "Indigenous People of Biafra (IPOB)", 
+oef_ts['gname'] = oef_ts['gname'].replace(["Ijaw extremists",
+                                           "Indigenous People of Biafra (IPOB)",
                                            "Tuareg extremists",
                                            "Tiv Militia",
                                            "Dogon extremists",
@@ -436,8 +433,8 @@ oef_ts['gname'] = oef_ts['gname'].replace(["Ijaw extremists",
                                            "Regional Militias/Tribes",
                                            "Regional Militias/Tribes"])
 
-oef_ts['gname'] = oef_ts['gname'].replace(["Separatists", 
-                                           "Gunmen", 
+oef_ts['gname'] = oef_ts['gname'].replace(["Separatists",
+                                           "Gunmen",
                                            "Militants",
                                            "Muslim Militants",
                                            "Rebels",
@@ -469,14 +466,17 @@ oef_ts['gname'] = oef_ts['gname'].replace(["Separatists",
                                            "Unknown",
                                            "Unknown"])
 
-#Checking group frequencies
+# Removing unknown groups from each mission
+oef_p = oef_p[(oef_p['gname'] != "Unknown")]
+oef_hoa = oef_hoa[(oef_hoa['gname'] != "Unknown")]
+oef_ts = oef_ts[(oef_ts['gname'] != "Unknown")]
+
+# Checking group frequencies
 table1 = oef_p.gname.value_counts()
 table2 = oef_hoa.gname.value_counts()
 table3 = oef_ts.gname.value_counts()
 
-
-
 '''Exporting the three seperate subsets of data'''
-oef_p.to_csv(r'C:\Users\Slaye\Documents\KSU\Research_F22\datasets\oef_p.csv')
-oef_hoa.to_csv(r'C:\Users\Slaye\Documents\KSU\Research_F22\datasets\oef_hoa.csv')
-oef_ts.to_csv(r'C:\Users\Slaye\Documents\KSU\Research_F22\datasets\oef_ts.csv')
+oef_p.to_csv(r'C:\Users\Slaye\Documents\KSU\Research_F22\datasets\oef_p_revised.csv')
+oef_hoa.to_csv(r'C:\Users\Slaye\Documents\KSU\Research_F22\datasets\oef_hoa_revised.csv')
+oef_ts.to_csv(r'C:\Users\Slaye\Documents\KSU\Research_F22\datasets\oef_ts_revised.csv')
